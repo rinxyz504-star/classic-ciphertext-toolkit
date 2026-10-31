@@ -1,11 +1,11 @@
-def shift_upper(ch: str, k: int) -> str:
+def shift_upper(ch: str, k: int):
     if len(ch) != 1 or not ch.isupper() or not ch.isalpha():
         raise ValueError("ch must be a single uppercase letter")
     shifted = (ord(ch) - ord("A") + k) % 26
     return chr(ord("A") + shifted)
 
 
-def shift_char(ch: str, k: int) -> str:
+def shift_char(ch: str, k: int):
     if "A" <= ch <= "Z":
         base = "A"
     elif "a" <= ch <= "z":
@@ -16,18 +16,18 @@ def shift_char(ch: str, k: int) -> str:
     return chr(ord(base) + shifted)
 
 
-def caesar(text: str, k: int) -> str:
+def caesar(text: str, k: int):
     parts = []
     for ch in text:
         parts.append(shift_char(ch, k))
     return "".join(parts)
 
 
-def decrypt(text: str, k: int) -> str:
+def decrypt(text: str, k: int):
     return caesar(text, -k)
 
 
-def get_rail_indices(length: int, num_rails: int) -> list[int]:
+def get_rail_indices(length: int, num_rails: int):
     if length == 0:
         return []
     if num_rails <= 1:
@@ -48,7 +48,7 @@ def get_rail_indices(length: int, num_rails: int) -> list[int]:
     return result
 
 
-def rail_fence_encrypt(text: str, num_rails: int) -> str:
+def rail_fence_encrypt(text: str, num_rails: int):
     if len(text) == 0 or num_rails <= 1:
         return text
 
@@ -71,7 +71,7 @@ def rail_fence_encrypt(text: str, num_rails: int) -> str:
     return scrambled_text
 
 
-def rail_fence_decrypt(ciphertext: str, num_rails: int) -> str:
+def rail_fence_decrypt(ciphertext: str, num_rails: int):
     if len(ciphertext) == 0 or num_rails <= 1:
         return ciphertext
 
@@ -110,7 +110,7 @@ def letter_frequency(text: str) -> dict[str, int]:
     return count
 
 
-def crack_caesar(ciphertext: str) -> str:
+def crack_caesar(ciphertext: str):
     freq = letter_frequency(ciphertext)
     if not freq:
         return ciphertext
@@ -120,7 +120,7 @@ def crack_caesar(ciphertext: str) -> str:
     return decrypt(ciphertext, estimated_k)
 
 
-print("Running Block 1 Tests (Caesar)...")
+print("block1 test")
 assert shift_upper("D", 3) == "G"
 assert shift_upper("Y", 3) == "B"
 assert shift_upper("A", 0) == "A"
