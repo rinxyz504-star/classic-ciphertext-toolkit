@@ -132,7 +132,7 @@ for k in range(-30, 31):
         assert decrypt(caesar(t, k), k) == t
 print("Block 1 Passed!")
 
-print("Running Block 2 Tests (Rail Fence)...")
+print("block 2 test")
 assert get_rail_indices(6, 3) == [0, 1, 2, 1, 0, 1]
 assert rail_fence_encrypt("SECRET", 3) == "SEERTC"
 assert rail_fence_decrypt("SEERTC", 3) == "SECRET"
